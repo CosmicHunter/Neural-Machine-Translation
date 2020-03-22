@@ -43,7 +43,10 @@ Here are some properties of the model that you may notice:
 * The post-attention LSTM at time 't' only takes the hidden state ![](http://latex.codecogs.com/gif.latex?%24s%5E%7B%5Clangle%20t%5Crangle%7D%24) and cell state ![](http://latex.codecogs.com/gif.latex?%24c%5E%7B%5Clangle%20t%5Crangle%7D%24) as input. 
 * We have designed the model this way because unlike language generation (where adjacent characters are highly correlated) there isn't as strong a dependency between the previous character and the next character in a YYYY-MM-DD date.
 
-![](img1.png)
+#### Concatenation of hidden states from the forward and backward pre-attention LSTMs
+- ![](http://latex.codecogs.com/gif.latex?%24%5Coverrightarrow%7Ba%7D%5E%7B%5Clangle%20t%20%5Crangle%7D%24): hidden state of the forward-direction, pre-attention LSTM.
+- ![](http://latex.codecogs.com/gif.latex?%24%5Coverleftarrow%7Ba%7D%5E%7B%5Clangle%20t%20%5Crangle%7D%24): hidden state of the backward-direction, pre-attention LSTM.
+- ![](http://latex.codecogs.com/gif.latex?%24a%5E%7B%5Clangle%20t%20%5Crangle%7D) = ![](http://latex.codecogs.com/gif.latex?%5B%5Coverrightarrow%7Ba%7D%5E%7B%5Clangle%20t%20%5Crangle%7D%2C%20%5Coverleftarrow%7Ba%7D%5E%7B%5Clangle%20t%20%5Crangle%7D%5D%24): the concatenation of the activations of both the forward-direction![](http://latex.codecogs.com/gif.latex?%24%5Coverrightarrow%7Ba%7D%5E%7B%5Clangle%20t%20%5Crangle%7D%24) and backward-directions ![](http://latex.codecogs.com/gif.latex?%24%5Coverleftarrow%7Ba%7D%5E%7B%5Clangle%20t%20%5Crangle%7D%24) of the pre-attention Bi-LSTM. 
     
 
 ![](img2.png)
