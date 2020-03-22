@@ -22,7 +22,7 @@ In this part, you will implement the attention mechanism presented in the lectur
     * The diagram on the right shows what one "attention" step does to calculate the attention variables ![](http://latex.codecogs.com/gif.latex?%24%5Calpha%5E%7B%5Clangle%20t%2C%20t%27%20%5Crangle%7D%24.)
     * The attention variables ![](http://latex.codecogs.com/gif.latex?%24%5Calpha%5E%7B%5Clangle%20t%2C%20t%27%20%5Crangle%7D%24) are used to compute the context variable ![](http://latex.codecogs.com/gif.latex?%24context%5E%7B%5Clangle%20t%20%5Crangle%7D%24) for each timestep in the output (![](http://latex.codecogs.com/gif.latex?%24t%3D1%2C%20%5Cldots%2C%20T_y%24)). 
     
-Here are some properties of the model that you may notice: 
+Here are some properties of the model: 
 
 #### Pre-attention and Post-attention LSTMs on both sides of the attention mechanism
 * There are two separate LSTMs in this model (see diagram on the left): pre-attention and post-attention LSTMs.
