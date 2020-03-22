@@ -48,5 +48,10 @@ Here are some properties of the model:
 - ![](http://latex.codecogs.com/gif.latex?%24%5Coverleftarrow%7Ba%7D%5E%7B%5Clangle%20t%20%5Crangle%7D%24): hidden state of the backward-direction, pre-attention LSTM.
 - ![](http://latex.codecogs.com/gif.latex?%24a%5E%7B%5Clangle%20t%20%5Crangle%7D) = ![](http://latex.codecogs.com/gif.latex?%5B%5Coverrightarrow%7Ba%7D%5E%7B%5Clangle%20t%20%5Crangle%7D%2C%20%5Coverleftarrow%7Ba%7D%5E%7B%5Clangle%20t%20%5Crangle%7D%5D%24): the concatenation of the activations of both the forward-direction![](http://latex.codecogs.com/gif.latex?%24%5Coverrightarrow%7Ba%7D%5E%7B%5Clangle%20t%20%5Crangle%7D%24) and backward-directions ![](http://latex.codecogs.com/gif.latex?%24%5Coverleftarrow%7Ba%7D%5E%7B%5Clangle%20t%20%5Crangle%7D%24) of the pre-attention Bi-LSTM. 
     
+#### Computing "energies" ![](http://latex.codecogs.com/gif.latex?%24e%5E%7B%5Clangle%20t%2C%20t%27%20%5Crangle%7D%24) as a function of ![](http://latex.codecogs.com/gif.latex?%24s%5E%7B%5Clangle%20t-1%20%5Crangle%7D%24) and ![](http://latex.codecogs.com/gif.latex?%24a%5E%7B%5Clangle%20t%27%20%5Crangle%7D%24)
 
-![](img2.png)
+* "e" is called the "energies" variable.
+* ![](http://latex.codecogs.com/gif.latex?%24s%5E%7B%5Clangle%20t-1%20%5Crangle%7D%24) is the hidden state of the post-attention LSTM
+* ![](http://latex.codecogs.com/gif.latex?%24a%5E%7B%5Clangle%20t%27%20%5Crangle%7D%24) is the hidden state of the pre-attention LSTM.
+* ![](http://latex.codecogs.com/gif.latex?%24s%5E%7B%5Clangle%20t-1%20%5Crangle%7D%24) and ![](http://latex.codecogs.com/gif.latex?%24a%5E%7B%5Clangle%20t%20%5Crangle%7D%24) are fed into a simple neural network, which learns the function to output ![](http://latex.codecogs.com/gif.latex?%24e%5E%7B%5Clangle%20t%2C%20t%27%20%5Crangle%7D%24).
+* ![](http://latex.codecogs.com/gif.latex?%24e%5E%7B%5Clangle%20t%2C%20t%27%20%5Crangle%7D%24) is then used when computing the attention ![](http://latex.codecogs.com/gif.latex?%24a%5E%7B%5Clangle%20t%2C%20t%27%20%5Crangle%7D%24) that ![](http://latex.codecogs.com/gif.latex?%24y%5E%7B%5Clangle%20t%20%5Crangle%7D%24) should pay to ![](http://latex.codecogs.com/gif.latex?%24a%5E%7B%5Clangle%20t%27%20%5Crangle%7D%24).
