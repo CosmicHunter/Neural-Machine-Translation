@@ -25,24 +25,23 @@ In this part, you will implement the attention mechanism presented in the lectur
 Here are some properties of the model that you may notice: 
 
 #### Pre-attention and Post-attention LSTMs on both sides of the attention mechanism
-- There are two separate LSTMs in this model (see diagram on the left): pre-attention and post-attention LSTMs.
-- *Pre-attention* Bi-LSTM is the one at the bottom of the picture is a Bi-directional LSTM and comes *before* the attention mechanism.
+* There are two separate LSTMs in this model (see diagram on the left): pre-attention and post-attention LSTMs.
+* *Pre-attention* Bi-LSTM is the one at the bottom of the picture is a Bi-directional LSTM and comes *before* the attention mechanism.
     - The attention mechanism is shown in the middle of the left-hand diagram.
     - The pre-attention Bi-LSTM goes through <img src="https://render.githubusercontent.com/render/math?math=Tx"> time steps
-- *Post-attention* LSTM: at the top of the diagram comes *after* the attention mechanism. 
+* *Post-attention* LSTM: at the top of the diagram comes *after* the attention mechanism. 
     - The post-attention LSTM goes through <img src="https://render.githubusercontent.com/render/math?math=T_y"> time steps. 
-
-- The post-attention LSTM passes the hidden state <img src="https://render.githubusercontent.com/render/math?math=s^{\langle t \rangle}"> and cell state <img src="https://render.githubusercontent.com/render/math?math=c^{\langle t \rangle}"> from one time step to the next.     
+* The post-attention LSTM passes the hidden state <img src="https://render.githubusercontent.com/render/math?math=s^{\langle t \rangle}"> and cell state <img src="https://render.githubusercontent.com/render/math?math=c^{\langle t \rangle}"> from one time step to the next.     
 
 
 #### An LSTM has both a hidden state and cell state
-* In the lecture videos, we were using only a basic RNN for the post-attention sequence model
-    * This means that the state captured by the RNN was outputting only the hidden state ![](http://latex.codecogs.com/gif.latex?%24s%5E%7B%5Clangle%20t%5Crangle%7D%24). 
-* In this assignment, we are using an LSTM instead of a basic RNN.
+*  we are using an LSTM instead of a basic RNN.
     * So the LSTM has both the hidden state ![](http://latex.codecogs.com/gif.latex?%24s%5E%7B%5Clangle%20t%5Crangle%7D%24) and the cell state ![](http://latex.codecogs.com/gif.latex?%24c%5E%7B%5Clangle%20t%5Crangle%7D%24).
 
 #### Each time step does not use predictions from the previous time step
 * Unlike previous text generation examples earlier in the course, in this model, the post-attention LSTM at time $t$ does not take the previous time step's prediction ![](http://latex.codecogs.com/gif.latex?%24y%5E%7B%5Clangle%20t-1%20%5Crangle%7D%24) as input.
 * The post-attention LSTM at time 't' only takes the hidden state ![](http://latex.codecogs.com/gif.latex?%24s%5E%7B%5Clangle%20t%5Crangle%7D%24) and cell state ![](http://latex.codecogs.com/gif.latex?%24c%5E%7B%5Clangle%20t%5Crangle%7D%24) as input. 
 * We have designed the model this way because unlike language generation (where adjacent characters are highly correlated) there isn't as strong a dependency between the previous character and the next character in a YYYY-MM-DD date.
+
+![](img1.png)
     
