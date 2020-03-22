@@ -45,4 +45,5 @@ Here are some properties of the model that you may notice:
 
 ![](img1.png)
     
+
 ![](img2.png)
